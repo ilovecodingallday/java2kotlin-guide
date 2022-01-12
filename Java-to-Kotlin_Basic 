@@ -1,0 +1,370 @@
+  
+  https://fabiomsr.github.io/
+  
+  
+  
+   From Java to Kotlin
+     * Basic
+     * Functions
+     * Classes
+   BASICS
+   Print
+   Java
+
+ System.out.print("Hello, World!");
+ System.out.println("Hello, World!");
+
+   Kotlin
+
+ print("Hello, World!")
+ println("Hello, World!")
+
+   Variables I
+   Java
+
+ final int x;
+ final int y = 1;
+
+   Kotlin
+
+ val x: Int
+ val y = 1
+
+   Variables II
+   Java
+
+ int w;
+ int z = 2;
+ z = 3;
+ w = 1;
+
+   Kotlin
+
+ var w: Int
+ var z = 2
+ z = 3
+ w = 1
+
+   Null I
+   Java
+
+ final String name = null;
+
+ String lastName;
+ lastName = null
+
+   Kotlin
+
+ val name: String? = null
+
+ var lastName: String?
+ lastName = null
+
+ var firstName: String
+ firstName = null // Compilation error!!
+
+   Null II
+   Java
+
+ if(text != null){
+   int length = text.length();
+ }
+
+   Kotlin
+
+ val length = text?.length
+
+ val length = text!!.length // NullPointerException if text == null
+
+   Strings I
+   Java
+
+ String name = "John";
+ String lastName = "Smith";
+ String text = "My name is: " + name + " " + lastName;
+ String otherText = "My name is: " + name.substring(2);
+
+   Kotlin
+
+ val name = "John"
+ val lastName = "Smith"
+ val text = "My name is: $name $lastName"
+ val otherText = "My name is: ${name.substring(2)}"
+
+   Strings II
+   Java
+
+ String text = "First Line\n" +
+               "Second Line\n" +
+               "Third Line";
+
+   Kotlin
+
+ val text = """
+         |First Line
+         |Second Line
+         |Third Line
+ """.trimMargin()
+
+   Ternary Operator
+   Java
+
+ String text = x > 5 ? "x > 5" : "x <= 5";
+
+   Kotlin
+
+ val text = if (x > 5)
+               "x > 5"
+             else "x <= 5"
+
+   BASICS
+   Bits Operations
+   Java
+
+ final int andResult  = a & b;
+ final int orResult   = a | b;
+ final int xorResult  = a ^ b;
+ final int rightShift = a >> 2;
+ final int leftShift  = a << 2;
+
+   Kotlin
+
+ val andResult  = a and b
+ val orResult   = a or b
+ val xorResult  = a xor b
+ val rightShift = a shr 2
+ val leftShift  = a shl 2
+
+   Is As In
+   Java
+
+ if(x instanceof Integer){ }
+
+ final String text = (String) other;
+
+ if(x >= 0 && x <= 10 ){}
+
+   Kotlin
+
+ if (x is Int) { }
+
+ val text = other as String
+
+ if (x in 0..10) { }
+
+   Smart Cast
+   Java
+
+ if(a instanceof String){
+   final String result = ((String) a).substring(1);
+ }
+
+   Kotlin
+
+ if (a is String) {
+   val result = a.substring(1)
+ }
+
+   Switch / When
+   Java
+
+ final int x = // value;
+ final String xResult;
+
+ switch (x){
+   case 0:
+   case 11:
+     xResult = "0 or 11";
+     break;
+   case 1:
+   case 2:
+     //...
+   case 10:
+     xResult = "from 1 to 10";
+     break;
+   default:
+     if(x < 12 && x > 14) {
+       xResult = "not from 12 to 14";
+       break;
+     }
+
+     if(isOdd(x)) {
+       xResult = "is odd";
+       break;
+     }
+
+     xResult = "otherwise";
+ }
+
+
+
+ final int y = // value;
+ final String yResult;
+
+ if(isNegative(y)){
+   yResult = "is Negative";
+ } else if(isZero(y)){
+   yResult = "is Zero";
+ }else if(isOdd(y)){
+   yResult = "is Odd";
+ }else {
+   yResult = "otherwise";
+ }
+
+   Kotlin
+
+ val x = // value
+ val xResult = when (x) {
+   0, 11 -> "0 or 11"
+   in 1..10 -> "from 1 to 10"
+   !in 12..14 -> "not from 12 to 14"
+   else -> if (isOdd(x)) { "is odd" } else { "otherwise" }
+ }
+
+ val y = // value
+ val yResult = when {
+   isNegative(y) -> "is Negative"
+   isZero(y) -> "is Zero"
+   isOdd(y) -> "is odd"
+   else -> "otherwise"
+ }
+
+   For
+   Java
+
+ for (int i = 1; i < 11 ; i++) { }
+
+ for (int i = 1; i < 11 ; i+=2) { }
+
+ for (String item : collection) { }
+
+ for (Map.Entry&ltString, String> entry: map.entrySet()) { }
+
+   Kotlin
+
+ for (i in 1 until 11) { }
+
+ for (i in 1..10 step 2) {}
+
+ for (item in collection) {}
+ for ((index, item) in collection.withIndex()) {}
+
+ for ((key, value) in map) {}
+
+   Collections
+   Java
+
+ final List&ltInteger> numbers = Arrays.asList(1, 2, 3);
+
+ final Map&ltInteger, String> map = new HashMap&ltInteger, String&gt();
+ map.put(1, "One");
+ map.put(2, "Two");
+ map.put(3, "Three");
+
+
+ // Java 9
+ final List&ltInteger> numbers = List.of(1, 2, 3);
+
+ final Map&ltInteger, String> map = Map.of(1, "One",
+                                         2, "Two",
+                                         3, "Three");
+
+   Kotlin
+
+ val numbers = listOf(1, 2, 3)
+
+ val map = mapOf(1 to "One",
+                 2 to "Two",
+                 3 to "Three")
+
+   Collections
+   Java
+
+ for (int number : numbers) {
+   System.out.println(number);
+ }
+
+ for (int number : numbers) {
+   if(number > 5) {
+     System.out.println(number);
+   }
+ }
+
+   Kotlin
+
+ numbers.forEach {
+     println(it)
+ }
+
+ numbers.filter  { it > 5 }
+        .forEach { println(it) }
+
+   Collections
+   Java
+
+ final Map&ltString, List&ltInteger>> groups = new HashMap<>();
+ for (int number : numbers) {
+   if((number & 1) == 0){
+     if(!groups.containsKey("even")){
+       groups.put("even", new ArrayList<>());
+     }
+
+     groups.get("even").add(number);
+     continue;
+   }
+
+   if(!groups.containsKey("odd")){
+     groups.put("odd", new ArrayList<>());
+   }
+
+   groups.get("odd").add(number);
+ }
+
+ // or
+
+ Map<String, List<Integer>> groups = items.stream().collect(
+   Collectors.groupingBy(item -> (item & 1) == 0 ? "even" : "odd")
+ );
+
+   Kotlin
+
+ val groups = numbers.groupBy {
+                 if (it and 1 == 0) "even" else "odd"
+              }
+
+   Collections
+   Java
+
+ final List&ltInteger> evens = new ArrayList<>();
+ final List&ltInteger> odds = new ArrayList<>();
+ for (int number : numbers){
+   if ((number & 1) == 0) {
+     evens.add(number);
+   }else {
+     odds.add(number);
+   }
+ }
+
+   Kotlin
+
+ val (evens, odds) = numbers.partition { it and 1 == 0 }
+
+   Collections
+   Java
+
+ final List&ltUser> users = getUsers();
+
+ Collections.sort(users, new Comparator&ltUser&gt(){
+   public int compare(User user, User otherUser){
+     return user.lastname.compareTo(otherUser.lastname);
+   }
+ });
+
+ // or
+
+ users.sort(Comparator.comparing(user -> user.lastname));
+
+   Kotlin
+
+ val users = getUsers()
+ users.sortedBy { it.lastname }

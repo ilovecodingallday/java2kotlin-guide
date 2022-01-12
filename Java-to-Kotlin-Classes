@@ -1,0 +1,256 @@
+https://fabiomsr.github.io/
+
+
+   From Java to Kotlin
+     * Basic
+     * Functions
+     * Classes
+   CLASSES
+   Constructor Call
+   Java
+
+ final File file = new File("file.txt");
+
+   Kotlin
+
+ val file = File("file.txt")
+
+   Class
+   Java
+
+ public final class User {
+ }
+
+   Kotlin
+
+ class User
+
+   Open Class
+   Java
+
+ public class User {
+ }
+
+   Kotlin
+
+ open class User
+
+   Final Attributes
+   Java
+
+ final class User {
+      private final String name;
+
+      public User(String name) {
+          this.name = name;
+      }
+
+      public String getName() {
+          return name;
+      }
+  }
+
+   Kotlin
+
+ class User(val name: String)
+
+   Primary Constructor
+   Java
+
+ final class User {
+      private String name;
+
+      public User(String name) {
+          this.name = name;
+      }
+
+      public String getName() {
+          return name;
+      }
+
+      public void setName(String name) {
+          this.name = name;
+      }
+  }
+
+   Kotlin
+
+ class User(var name: String)
+
+   Optional Arguments in Constructors
+   Java
+
+ final class User {
+      private String name;
+      private String lastName;
+
+      public User(String name) {
+          this(name, "");
+      }
+
+      public User(String name, String lastName) {
+          this.name = name;
+          this.lastName = lastName;
+      }
+
+      // And Getters & Setters
+  }
+
+   Kotlin
+
+ class User(var name: String, var lastName: String = "")
+
+   Properties
+   Java
+
+ public class Document {
+     private String id = "00x";
+
+      public String getId() {
+          return id;
+      }
+
+      public void setId(String id) {
+          if(id != null && !id.isEmpty()) {
+              this.id = id;
+          }
+      }
+  }
+
+   Kotlin
+
+ class Document{
+     var id : String = "00x"
+         set(value) {
+             if(value.isNotEmpty())  field = value
+         }
+ }
+
+   FUNCTIONS
+   Abstract Class
+   Java
+
+ public abstract class Document{
+    public abstract int calculateSize();
+ }
+
+ public class Photo extends Document{
+     @Override
+     public int calculateSize() {
+
+     }
+ }
+
+   Kotlin
+
+ abstract class Document {
+     abstract fun calculateSize(): Int
+ }
+
+ class Photo : Document() {
+     override fun calculateSize(): Int {
+
+     }
+ }
+
+   Singleton
+   Java
+
+ public class Document {
+    private static final Document INSTANCE = new Document();
+
+    public static Document getInstance(){
+        return INSTANCE;
+    }
+
+  }
+ 
+
+   Kotlin
+
+ object Document {
+
+ }
+
+   Extensions
+   Java
+
+ public class ByteArrayUtils {
+       public static String toHexString(byte[] data) {
+
+       }
+   }
+
+   final byte[] dummyData = new byte[10];
+   final String hexValue = ByteArrayUtils.toHexString(dummyData);
+
+   Kotlin
+
+ fun ByteArray.toHex() : String {
+
+ }
+
+ val dummyData = byteArrayOf()
+ val hexValue = dummyData.toHex()
+
+   Inner Class
+   Java
+
+ public class Documment {
+
+     class InnerClass {
+
+     }
+
+ }
+
+   Kotlin
+
+ class Document {
+     inner class InnerClass
+ }
+
+   Nested Class
+   Java
+
+ public class Documment {
+
+     public static class InnerClass {
+
+     }
+
+ }
+
+   Kotlin
+
+ class Document {
+
+     class InnerClass
+
+ }
+
+   Interface
+   Java
+
+ public interface Printable {
+     void print();
+ }
+
+ public class Document implements Printable {
+     @Override
+     public void print() {
+
+     }
+ }
+
+   Kotlin
+
+ interface Printable{
+     fun print()
+ }
+
+ class Document : Printable{
+     override fun print() {
+
+     }
+ }

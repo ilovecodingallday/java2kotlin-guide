@@ -1,0 +1,227 @@
+https://fabiomsr.github.io/
+
+
+   From Java to Kotlin
+     * Basic
+     * Functions
+     * Classes
+   FUNCTIONS
+   Basic Function
+   Java
+
+ public void hello() {
+   System.out.print("Hello, World!");
+ }
+
+   Kotlin
+
+ fun hello() {
+     println("Hello, World!")
+ }
+
+   Arguments
+   Java
+
+ public void hello(String name){
+   System.out.print("Hello, " + name + "!");
+ }
+
+   Kotlin
+
+ fun hello(name: String) {
+     println("Hello, $name!")
+ }
+
+   Default Values
+   Java
+
+ public void hello(String name) {
+   if (name == null) {
+     name = "World";
+   }
+
+   System.out.print("Hello, " + name + "!");
+ }
+
+   Kotlin
+
+ fun hello(name: String = "World") {
+     println("Hello, $name!")
+ }
+
+   Return
+   Java
+
+ public boolean hasItems() {
+   return true;
+ }
+
+   Kotlin
+
+ fun hasItems() : Boolean {
+     return true
+ }
+
+   Single-Expression
+   Java
+
+ public double cube(double x) {
+   return x * x * x;
+ }
+
+   Kotlin
+
+ fun cube(x: Double) : Double = x * x * x
+
+   FUNCTIONS
+   Vararg
+   Java
+
+ public int sum(int... numbers) { }
+
+   Kotlin
+
+ fun sum(vararg x: Int) { }
+
+   Main
+   Java
+
+ public class MyClass {
+     public static void main(String[] args){
+
+     }
+ }
+
+   Kotlin
+
+ fun main(args: Array&ltString&gt) {
+
+ }
+
+   Named Arguments
+   Java
+
+ public static void main(String[]args){
+   openFile("file.txt", true);
+ }
+
+ public static File openFile(String filename, boolean readOnly) { }
+
+   Kotlin
+
+ fun main(args: Array&ltString&gt) {
+   openFile("file.txt", readOnly = true)
+ }
+
+ fun openFile(filename: String, readOnly: Boolean) : File { }
+
+   Optional Arguments
+   Java
+
+ public static void main(String[]args){
+   createFile("file.txt");
+
+   createFile("file.txt", true);
+
+   createFile("file.txt", true, false);
+
+   createExecutableFile("file.txt");
+ }
+
+ public static File createFile(String filename) { }
+
+ public static File createFile(String filename, boolean appendDate) { }
+
+ public static File createFile(String filename, boolean appendDate,
+                               boolean executable) { }
+
+ public static File createExecutableFile(String filename) { }
+
+   Kotlin
+
+ fun main(args: Array&ltString&gt) {
+   createFile("file.txt")
+
+   createFile("file.txt", true)
+   createFile("file.txt", appendDate = true)
+
+   createFile("file.txt", true, false)
+   createFile("file.txt", appendDate = true, executable = true)
+
+   createFile("file.txt", executable = true)
+ }
+
+ fun createFile(filename: String, appendDate: Boolean = false,
+                executable: Boolean = false): File { }
+
+   Generic Methods
+   Java
+
+ public void init() {
+   List&ltString> moduleInferred = createList("net");
+ }
+
+ public &ltT> List&ltT> createList(T item) { }
+
+   Kotlin
+
+ fun init() {
+   val module = createList&ltString&gt("net")
+   val moduleInferred = createList("net")
+ }
+
+ fun &ltT> createList(item: T): List&ltT> { }
+
+   Data Classes - Destructuring
+   Java
+
+ public static void main(String[]args) {
+     Book book = createBook();
+
+     System.out.println(book);
+     System.out.println("Title: " + book.title);
+ }
+
+ public static Book createBook(){
+     return new Book("title_01", "author_01");
+ }
+
+ public class Book {
+     final private String title;
+     final private String author;
+
+     public Book(String title, String author) {
+         this.title = title;
+         this.author = author;
+     }
+
+     public String getTitle() {
+         return title;
+     }
+
+     public String getAuthor() {
+         return author;
+     }
+
+     @Override
+     public String toString() {
+         return "Title: " + title + " Author: " + author;
+     }
+ }
+
+   Kotlin
+
+ fun main(args: Array&ltString&gt) {
+     val book = createBook();
+     // or
+     val (title, author) = createBook()
+
+     println(book)
+     println("Title: $title")
+ }
+
+ fun createBook() : Book{
+     return Book("title_01", "author_01")
+ }
+
+ data class Book(val title: String, val author: String)
